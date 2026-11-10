@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { ArrowUpRight, ArrowRight, Menu, X, MessageCircle, Phone, MapPin, Mail, Check, Plus, Minus, MoveHorizontal, Hammer, House, Building2, Paintbrush, Ruler, ShieldCheck } from 'lucide-react';
-import projectImages from 'virtual:project-images';
+import projectImages from './project-images.generated.json';
 
 export const COMPANY = { name: 'Fast Traders', phone: '+92 323 7106190', whatsapp: '923237106190', email: 'Fasttraders2018@gmail.com', address: 'Office No. 29, 1st Floor, Gohar Plaza, Wahdat Road, Lahore' };
 // Replace these local photographs with the client's approved work. No AI images are used.
@@ -153,7 +153,8 @@ const projectDetails:Omit<Project,'images'>[]=[
  {slug:'dubai-islamic-bank-renovation',title:'Dubai Islamic Bank Branch Renovation',category:'Banking',client:'Dubai Islamic Bank',work:'Branch Renovation',overview:'A branch renovation project for Dubai Islamic Bank. Browse the gallery and contact Fast Traders to discuss a similar commercial renovation.',services:['office-renovation','glass-work']},
  {slug:'dha-home-kitchen',title:'DHA Home Kitchen Formation',category:'Residential',client:'Private residence · DHA',work:'Home Kitchen Formation',overview:'A home kitchen formation project in DHA. This page is dedicated to its kitchen gallery and project information.',services:['kitchen-redo','wooden-work']},
 ];
-export const PROJECTS:Project[]=projectDetails.map(project=>({...project,images:projectImages[project.slug]??[]}));
+const projectImagesBySlug:Record<string,Project['images']>=projectImages;
+export const PROJECTS:Project[]=projectDetails.map(project=>({...project,images:projectImagesBySlug[project.slug]??[]}));
 function ProjectGallery({project,compact=false}:{project:Project;compact?:boolean}){
  const[index,setIndex]=useState(0);const[portrait,setPortrait]=useState(false);const count=project.images.length;const current=project.images[index];
  function move(step:number){setIndex(i=>(i+step+count)%count)}

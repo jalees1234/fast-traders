@@ -16,6 +16,7 @@
 /out/
 next-env.d.ts
 *.tsbuildinfo
+/app/project-images.generated.json
 
 # Test output
 /coverage/

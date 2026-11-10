@@ -10,7 +10,10 @@ npm install
 npm run dev
 ```
 
-This project uses the included Vinext/Vite runtime. For standard Next.js hosting, the `app/` pages and `public/images/` can be copied into a Next.js App Router project with React and `lucide-react` installed. No backend is needed for inquiries: the contact form prepares a message and the visitor explicitly sends it through WhatsApp.
+The development server uses the included Vinext/Vite runtime. Production builds use standard Next.js so the project can deploy directly to Vercel. No backend is needed for inquiries: the contact form prepares a message and the visitor explicitly sends it through WhatsApp.
+
+## Deploy on Vercel
+Import the GitHub repository and use the **Next.js** framework preset. Keep the root directory as `./`, the build command as `npm run build` (or Vercel's detected default), and the output directory at its default. The build generates the project-photo manifest and then runs `next build`; do not override the output directory with `dist`.
 
 ## Customise
 - Company contact details: `COMPANY` near the top of `app/FastTraders.tsx`.
